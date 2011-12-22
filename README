@@ -1,0 +1,39 @@
+Welcome to fingerpuppet! 
+
+What's a fingerpuppet?
+fingerpuppet is a Python module (plus extra goodies) that is designed for the analysis of RNA-Seq data.
+
+What's RNA-Seq?
+Brother, if you don't know, you're living in the stone age. You may be unfamiliar with it because you're not a biologist, or more specifically you
+aren't a geneticist, or even more specifically because you don't study global gene expression. I will assume for the purposes of this README that
+you aren't a geneticist, or a biologist even, and that you probably failed biology in junior high because you got naseous when asked to dissect a
+frog. So let's start from the beginning. You are not a single piece; rather, you are made up of billions of tiny balls called cells. All of the 
+information that defines you biologically is encoded in molecules called DNA, with a copy of your DNA present in almost every cell. DNA forms a book
+of you, written in a very specific language with four letters in its alphabet (A,T,G, and C). DNA is organized into units called genes; these are subsets of your
+DNA that describe the structure of each one of the tiny pieces of protein that make up your cells, along with the structure of lots of other types
+of molecules that your cells need. Just like DNA, proteins are made up of a small number of molecules which are strung together in a linear sequence;
+three-letter words in the DNA alphabet encode a single letter in the protein alphabet. To make, for instance, a protein, the gene encoding that 
+protein is copied from the DNA into a similar molecule called RNA. This copying is based on a fundamental property of DNA: A's stick to T's and 
+G's stick to C's. This is called complementarity, and is most fundamentally embodied in the fact that your DNA is stored in two complementary copies 
+which are stuck together to form a double-spiral. To copy a gene from DNA into RNA, the spiral is split at the gene, and a complementary sequence 
+of RNA is assembled to match the DNA for the gene. The RNA is then processed in many complex ways, and then its final sequence is translated into the 
+sequence of a protein. On a simplistic level, if your cell wants a lot of a particular protein, it makes lots of copies of the corresponding RNA. This
+fact, and the complementarity of DNA/RNA, is what makes RNA-Seq work. In three steps: 1) you extract all the RNA from a leaf, or someone's hair, or whatever,
+2) you determine the sequence of all these molecules of RNA, and 3) you compare those sequences to the known DNA sequnce (aligning), in order to determine
+what was being produced in your sample. Importantly, this doesn't just tell your what proteins were being made, but also how much, because you can count
+the number of times a particular RNA sequence showed up in your sample. Unfortunately, it isn't that simple, and there's a lot of guess work and heavy
+statistical analysis that goes into making this work. The first step is up to the biologist, and trust me, getting RNA out of your co-worker's toe nails
+is no easy task. Even once you've gotten the RNA, transforming it into something you can use in the RNA-Seq machine (a process called library prepartion)
+is very complex and delicate. For the purposes of fingerpuppet, we will assume this has already been done, if not perfectly, at least as well as possible.
+fingerpuppet does attempt to compensate for flaws in library preparation, but it isn't perfect. The second step is performed by a program called an aligner.
+An example would be bowtie or maq. These programs use a variety of techniques to find the best match within a large DNA molecule for the many small RNA
+molecules in a sample. It's really easy and no one should be impressed with such software; I mean, all you do is line up the DNA and the RNA, and you're done.
+Right? Wrong. First off, DNA is really big, like 3 billion letters long for a human, and RNA from these experiments is really small, say 35-70 letters,
+so you really are trying to find a needle in a haystack. Er, wait. My mistake. Not *a* needle in a haystack, more like 25 million needles in a haystack for
+an average RNA-Seq experiment. And did I mention that there are lots of errors in the RNA sequence, which means that a given RNA molecule won't necessarily
+line up perfectly to the DNA segment it came from? Long story short, alignment is really hard, and many people have spent a long time getting it to be
+efficient and accurate. But for fingerpuppet, we will also assume this has been done. What fingerpuppet takes as input is a compressed file of alignments,
+called a BAM file, which many aligners can produce, and which contains for each RNA molecule its sequence and where it aligned to in the DNA. This is where
+our fun begins.
+
+To be continued...
